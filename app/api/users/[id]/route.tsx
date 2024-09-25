@@ -3,13 +3,13 @@ import schema from '../schema';
 import prisma from '@/prisma/client';
 
 interface Props {
-	params: { id: number };
+	params: { id: string };
 }
 
 export async function GET(request: NextRequest, { params: { id } }: Props) {
 	const user = await prisma.user.findUnique({
 		where: {
-			id: id,
+			id: parseInt(id),
 		},
 	});
 
