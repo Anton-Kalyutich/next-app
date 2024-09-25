@@ -31,14 +31,14 @@ export async function PUT(request: NextRequest, { params: { id } }: Props) {
 	if (!validation.success) {
 		return NextResponse.json(validation.error.errors, { status: 400 });
 	}
-	if (id > 10) {
+	if (parseInt(id) > 10) {
 		return NextResponse.json({ error: 'User Not Found' }, { status: 404 });
 	}
 	return NextResponse.json({ id: 1, name: 'Antonio' });
 }
 
 export function DELETE(request: NextRequest, { params: { id } }: Props) {
-	if (id > 10) {
+	if (parseInt(id)) {
 		return NextResponse.json({ error: 'User Not Found' }, { status: 404 });
 	}
 	return NextResponse.json({});
